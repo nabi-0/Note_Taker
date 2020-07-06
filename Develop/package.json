@@ -1,12 +1,12 @@
 {
   "name": "note-taker",
   "version": "1.0.0",
-  "description": "Saving Notes (data) on a json File",
+  "description": "",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Natalia Arias",
+  "author": "",
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1"
