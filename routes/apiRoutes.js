@@ -41,7 +41,6 @@ module.exports = function(app) {
       if (err) throw err;
       let notes = JSON.parse(data);
       notes.push(newNotes);
-      //res.json(notesParsed);
 
     fs.writeFile("db.json", JSON.stringify(notes), (err) => {
       if (err) throw err;
@@ -56,12 +55,12 @@ module.exports = function(app) {
 
   app.delete("/api/notes/:id", function(req, res) {
     // Empty out the arrays of data
-    let deleteNote = req.params.id;
+    let deleteId = req.params.id;
     fs.readFile("db.json", function(err, data) {
       if (err) throw err;
       let notes = JSON.parse(data);
-      let newNotes = notes.filter((note) => note.id != deleteNote);
-      fs.writeFile("db.json", JSON.stringify(newNotes), (err) => {
+      let newNoteId = notes.filter((note) => note.id != deleteId);
+      fs.writeFile("db.json", JSON.stringify(newNoteId, null, 2), (err) => {
         if (err) throw err;
         res.json(true);
         console.log("Note was successfully deleted.")
@@ -69,4 +68,3 @@ module.exports = function(app) {
     });
   });
 };
-

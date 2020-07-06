@@ -1,12 +1,12 @@
 [   {
         "title":"Test Title",
         "text":"Test text",
-        "id":"test id" },
-    {
+        "id":"test id" 
+    },{
         "title":"Heroku",
         "text":"I hate Heroku. I don't know how to fix it",
-        "id":"id:1" },
-    {
+        "id":"id:1" 
+    },{
         "title": "Delete Me",
         "text": "ugghhhh....doesn't delete from front end",
         "id":"two"
