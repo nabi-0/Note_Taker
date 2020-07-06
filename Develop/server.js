@@ -7,8 +7,8 @@
 var express = require("express");
 var path = require("path"); // Path variable
 
-var htmlRoutes = require("./routes/htmlRoutes");
-var apiRoutes = require("./routes/apiRoutes");
+// var htmlRoutes = require("./routes/htmlRoutes");
+// var apiRoutes = require("./routes/apiRoutes");
 // ==============================================================================
 // EXPRESS CONFIGURATION
 // This sets up the basic properties for our express server
@@ -23,7 +23,7 @@ var PORT = process.env.PORT || 8080;
 // Sets up the Express app to handle data parsing
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(express.static(path.join(__dirname, "routes"))); //connect path variable to express
+app.use(express.static(path.join(__dirname, "public"))); //connect path variable to express
 
 // ================================================================================
 // ROUTER

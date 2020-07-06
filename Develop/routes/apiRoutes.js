@@ -30,7 +30,7 @@ module.exports = function(app) {
   // ---------------------------------------------------------------------------
 
   app.post("/api/notes", function(req, res) {
-    //let newNotes = req.body;
+    let newNotes = req.body;
     fs.readFile("db/db.json", function(err, data) {
 
   // Note the code here. Our "server" will respond to requests and let users know if they have a table or not.
@@ -38,7 +38,7 @@ module.exports = function(app) {
   // req.body is available since we're using the body parsing middleware    
       if (err) throw err;
       let notes = JSON.parse(data);
-      notes.push(req.body);
+      notes.push(newNotes);
       //res.json(true);
 
     fs.writeFile("db/db.json", JSON.stringify(notes), (err) => {
