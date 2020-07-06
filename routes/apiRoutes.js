@@ -41,7 +41,7 @@ module.exports = function(app) {
       if (err) throw err;
       let notes = JSON.parse(data);
       notes.push(newNotes);
-      res.json(true);
+      //res.json(notesParsed);
 
     fs.writeFile("db.json", JSON.stringify(notes), (err) => {
       if (err) throw err;
@@ -59,7 +59,7 @@ module.exports = function(app) {
     let deleteNote = req.params.id;
     fs.readFile("db.json", function(err, data) {
       if (err) throw err;
-      let notes = JSON.params(data);
+      let notes = JSON.parse(data);
       let newNotes = notes.filter((note) => note.id != deleteNote);
       fs.writeFile("db.json", JSON.stringify(newNotes), (err) => {
         if (err) throw err;
