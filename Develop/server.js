@@ -7,8 +7,6 @@
 var express = require("express");
 var path = require("path"); // Path variable
 
-// var htmlRoutes = require("./routes/htmlRoutes");
-// var apiRoutes = require("./routes/apiRoutes");
 // ==============================================================================
 // EXPRESS CONFIGURATION
 // This sets up the basic properties for our express server

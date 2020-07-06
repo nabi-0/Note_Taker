@@ -4,7 +4,9 @@
 // These data sources hold arrays of information on table-data, waitinglist, etc.
 // ===============================================================================
 
-var data = require("../db/db.json");
+var fs =require("fs");
+var path = require("path");
+//var notes = require("./db/db.json");
 
 // ===============================================================================
 // ROUTING
@@ -18,7 +20,7 @@ module.exports = function(app) {
   // ---------------------------------------------------------------------------
 
   app.get("/api/notes", function(req, res) {
-    res.sendFile(path.join(__dirname, "db/db.json"));
+    res.sendFile(path.join(__dirname, "db.json"));
   });
 
   // API POST Requests
@@ -31,7 +33,7 @@ module.exports = function(app) {
 
   app.post("/api/notes", function(req, res) {
     let newNotes = req.body;
-    fs.readFile("db/db.json", function(err, data) {
+    fs.readFile("db.json", function(err, data) {
 
   // Note the code here. Our "server" will respond to requests and let users know if they have a table or not.
   // It will do this by sending out the value "true" have a table
@@ -39,9 +41,9 @@ module.exports = function(app) {
       if (err) throw err;
       let notes = JSON.parse(data);
       notes.push(newNotes);
-      //res.json(true);
+      res.json(true);
 
-    fs.writeFile("db/db.json", JSON.stringify(notes), (err) => {
+    fs.writeFile("db.json", JSON.stringify(notes), (err) => {
       if (err) throw err;
       console.log("written successfully...maybe, I'm not sure");
       return res.json(newNotes);
@@ -55,11 +57,11 @@ module.exports = function(app) {
   app.delete("/api/notes/:id", function(req, res) {
     // Empty out the arrays of data
     let deleteNote = req.params.id;
-    fs.readFile("./db/db.json", function(err, data) {
+    fs.readFile("db.json", function(err, data) {
       if (err) throw err;
       let notes = JSON.params(data);
       let newNotes = notes.filter((note) => note.id != deleteNote);
-      fs.writeFile("./db/db.json", JSON.stringify(newNotes), (err) => {
+      fs.writeFile("db.json", JSON.stringify(newNotes), (err) => {
         if (err) throw err;
         res.json(true);
         console.log("Note was successfully deleted.")
