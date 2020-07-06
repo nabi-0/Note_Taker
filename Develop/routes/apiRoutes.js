@@ -43,7 +43,7 @@ module.exports = function(app) {
 
     fs.writeFile("db/db.json", JSON.stringify(notes), (err) => {
       if (err) throw err;
-      console.log("written successfully...");
+      console.log("written successfully...maybe, I'm not sure");
       return res.json(newNotes);
     });
   });
